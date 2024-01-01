@@ -14,7 +14,7 @@ import java.util.HashMap;
  */
 public class AnggotaBulanan extends Anggota{
     
-    public AnggotaBulanan(String id, String nama, LocalDate l, int jumlahDipinjam){
+    public AnggotaBulanan(String id, String nama, String l, int jumlahDipinjam){
         super(id,nama,l,jumlahDipinjam);
     }
     

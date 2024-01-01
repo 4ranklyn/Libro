@@ -72,11 +72,11 @@ public class AccessXML {
 
                     String id = anggotaElement.getAttribute("id");
                     String nama = anggotaElement.getAttribute("nama");
-                    LocalDate tanggalMulai = LocalDate.parse(anggotaElement.getAttribute("tanggalMulai"));
+                    String tanggalMulai = anggotaElement.getAttribute("tanggalMulai");
                     int jumlahPinjam = Integer.parseInt(anggotaElement.getAttribute("jumlahPinjam"));
 
                     AnggotaTetap anggota = new AnggotaTetap(id, nama, tanggalMulai, jumlahPinjam);
-                    anggota.tanggalMulai = tanggalMulai;
+                    anggota.date = tanggalMulai;
                     anggota.jumlahPinjam = jumlahPinjam;
 
                     Pinjam.tMap.put(id, anggota);
@@ -106,11 +106,12 @@ public class AccessXML {
 
                     String id = anggotaElement.getAttribute("id");
                     String nama = anggotaElement.getAttribute("nama");
-                    LocalDate tanggalMulai = LocalDate.parse(anggotaElement.getAttribute("tanggalMulai"));
+                    String tanggalMulai;
+                    tanggalMulai = anggotaElement.getAttribute("tanggalMulai");
                     int jumlahPinjam = Integer.parseInt(anggotaElement.getAttribute("jumlahPinjam"));
 
                     AnggotaBulanan anggota = new AnggotaBulanan(id, nama, tanggalMulai, jumlahPinjam);
-                    anggota.tanggalMulai = tanggalMulai;
+                    anggota.date = tanggalMulai;
                     anggota.jumlahPinjam = jumlahPinjam;
 
                     Pinjam.bMap.put(id, anggota);
@@ -227,7 +228,7 @@ public class AccessXML {
             Anggota anggota = (Anggota) element;
             attributes.put("id", anggota.id);
             attributes.put("nama", anggota.nama);
-            attributes.put("tanggalMulai", anggota.tanggalMulai.toString());
+            attributes.put("tanggalMulai", anggota.date.toString());
             attributes.put("jumlahPinjam", String.valueOf(anggota.jumlahPinjam));
         } else if (element instanceof Buku) {
             Buku buku = (Buku) element;

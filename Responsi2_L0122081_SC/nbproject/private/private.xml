@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jasso/Documents/kuliah/sem3/pbo/responsi2/Responsi2_L0122081_SC/src/responsi2_l0122081_sc/AccessXML.java</file>
-            <file>file:/C:/Users/jasso/Documents/kuliah/sem3/pbo/responsi2/Responsi2_L0122081_SC/src/responsi2_l0122081_sc/frameUtama.java</file>
-            <file>file:/C:/Users/jasso/Documents/kuliah/sem3/pbo/responsi2/Responsi2_L0122081_SC/src/responsi2_l0122081_sc/frameLogin.java</file>
+            <file>file:/C:/Users/jasso/Documents/kuliah/sem3/pbo/responsi2/Responsi2_L0122081_SC/src/responsi2_l0122081_sc/dataLibro.xml</file>
+            <file>file:/C:/Users/jasso/Documents/kuliah/sem3/pbo/responsi2/Responsi2_L0122081_SC/src/responsi2_l0122081_sc/Buku.java</file>
+            <file>file:/C:/Users/jasso/Documents/kuliah/sem3/pbo/responsi2/Responsi2_L0122081_SC/src/responsi2_l0122081_sc/AnggotaTetap.java</file>
+            <file>file:/C:/Users/jasso/Documents/kuliah/sem3/pbo/responsi2/Responsi2_L0122081_SC/src/responsi2_l0122081_sc/frameAnggotaBulanan.java</file>
+            <file>file:/C:/Users/jasso/Documents/kuliah/sem3/pbo/responsi2/Responsi2_L0122081_SC/src/responsi2_l0122081_sc/frameAnggotaTetap.java</file>
+            <file>file:/C:/Users/jasso/Documents/kuliah/sem3/pbo/responsi2/Responsi2_L0122081_SC/src/responsi2_l0122081_sc/Anggota.java</file>
+            <file>file:/C:/Users/jasso/Documents/kuliah/sem3/pbo/responsi2/Responsi2_L0122081_SC/src/responsi2_l0122081_sc/AnggotaBulanan.java</file>
         </group>
     </open-files>
 </project-private>

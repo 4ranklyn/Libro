@@ -33,32 +33,19 @@ public class frameAnggotaTetap extends javax.swing.JFrame {
         docID.addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                if(search()){
-                    addAble = false;
-                    warning.setText("ID sudah digunakan");
-                }else{
-                    addAble = true;
-                    warning.setText("");
-                }
+                checkID();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                if(search()){
-                    addAble = false;
-                    warning.setText("ID sudah digunakan");
-                }else{
-                    addAble = true;
-                    warning.setText("");
-                }
+                checkID();
             }
 
             @Override
-            public void changedUpdate(DocumentEvent e) {}
+            public void changedUpdate(DocumentEvent e) {
+            }
         });
-        
 
-        
         javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
         model.addTableModelListener(e -> {
             if (e.getType() == javax.swing.event.TableModelEvent.UPDATE) {
@@ -69,34 +56,40 @@ public class frameAnggotaTetap extends javax.swing.JFrame {
                 if (column != 0) {
                     String id = model.getValueAt(row, 0).toString();
                     String nama = model.getValueAt(row, 1).toString();
-                    LocalDate tanggalMulai = (LocalDate) model.getValueAt(row, 2);
+                    Object date = model.getValueAt(row, 2);
                     int jumlahPinjam = (int) model.getValueAt(row, 3);
-                    
-                    Anggota.anggotaMap.get(id).setAnggota(nama, tanggalMulai, jumlahPinjam);
-                    AccessXML.writeXML();
+
+                    AnggotaTetap anggota = Pinjam.tMap.get(id);
+                    if (anggota != null) {
+                        anggota.setAnggota(nama, (String) date, jumlahPinjam);
+                        AccessXML.writeXML();
+                    }
                 }
             }
         });
-        
-
     }
-    
-        public boolean search(){
-            String id = ID.getText();
-            Anggota a = Anggota.anggotaMap.get(id);
-            if(a == null){
-                Nama.setText("");
-                return false;
-            }
-            if(a instanceof AnggotaTetap){
-                Nama.setText(a.getName());
-                AccessXML.readXML();
-                return true;
-            }else{
-                Nama.setText("");
-                return false;
-            }
+
+    private void checkID() {
+        if (search()) {
+            addAble = false;
+            warning.setText("ID sudah digunakan");
+        } else {
+            addAble = true;
+            warning.setText("");
         }
+    }
+
+    public boolean search() {
+        String id = ID.getText();
+        AnggotaTetap anggota = Pinjam.tMap.get(id);
+        if (anggota == null) {
+            Nama.setText("");
+            return false;
+        }
+
+        Nama.setText(anggota.getName());
+        return true;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -385,14 +378,14 @@ public class frameAnggotaTetap extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         String iD=ID.getText();
         String nama = Nama.getText();
-        LocalDate l = LocalDate.now();
+        String l = LocalDate.now().toString();
         int jumlahDipinjam = 0;
         boolean isTetap = true;
         javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
         AnggotaTetap a = Pinjam.tMap.get(iD);
         
         model.addRow(new Object[]{iD, nama, l, jumlahDipinjam});
-        a.anggotaBaru(iD, nama, l, jumlahDipinjam, isTetap);
+        a.setAnggotaTetap(iD, nama, l, jumlahDipinjam);
         
             AccessXML.writeXML();
             jTable1.setModel(model);

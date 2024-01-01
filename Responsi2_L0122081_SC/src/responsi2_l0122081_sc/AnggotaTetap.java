@@ -13,9 +13,12 @@ import java.time.LocalDate;
  * @author franklynical
  */
 public class AnggotaTetap extends Anggota {
-    public AnggotaTetap(String id, String nama, LocalDate l, int jumlahDipinjam){
-        super(id,nama,l,jumlahDipinjam);
-    }
+    public void setAnggotaTetap(String id, String nama, String tanggalMulai, int jumlahDipinjam) {
+    this.id = id;
+    this.nama = nama;
+    this.date = tanggalMulai;
+    this.jumlahPinjam = jumlahDipinjam;
+}
     
     @Override
     public void addData(String id, String nama) {
@@ -30,4 +33,9 @@ public class AnggotaTetap extends Anggota {
     public void hapusBuku(Buku buku) {
         jumlahPinjam--;
     }
+
+    public AnggotaTetap(String iD, String nama, String date, int jumlahDipinjam) {
+        super(iD,nama,date,jumlahDipinjam);
+    }
+
 }

@@ -4,6 +4,8 @@
  */
 package responsi2_l0122081_sc;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author franklynical
@@ -13,18 +15,20 @@ public class Anggota implements data{
     protected String id;
     protected String nama;
     protected int jumlahPinjam;
-    protected LocalDate tanggalMulai;
+    protected LocalDate d;
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    protected String date = d.format(formatter);
     
-    public Anggota(String id, String nama, LocalDate l, int jumlahDipinjam) {
-        this.id = id;
+    public Anggota(String iD, String nama, String date, int jumlahDipinjam) {
+        this.id = iD;
         this.nama = nama;
-        this.tanggalMulai = l;
+        this.date = date;
         this.jumlahPinjam = jumlahDipinjam;
     }    
     
-    public void setAnggota(String n, LocalDate l, int j) {
+    public void setAnggota(String n, String date, int j) {
         this.nama = n;
-        this.tanggalMulai = l;
+        this.date = date;
         this.jumlahPinjam = j;
     }
     
@@ -36,7 +40,7 @@ public class Anggota implements data{
     public void addData(String id, String nama){
         this.id = id;
         this.nama = nama;
-        this.tanggalMulai = LocalDate.now();
+        this.date = LocalDate.now().toString();
         this.jumlahPinjam = 0;
     }
 

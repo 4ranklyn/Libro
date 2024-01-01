@@ -4,6 +4,7 @@
  */
 package responsi2_l0122081_sc;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 /**
  *
@@ -22,42 +23,46 @@ public class Pinjam {
         rakBuku.put(id, buku);
     }
 
-    public static void anggotaBaru(String id, String nama, LocalDate tanggalMulai, int jumlahDipinjam, boolean isTetap){
-        Anggota anggota;
-        jumlahDipinjam = 0;
-        if (isTetap) {
-            anggota = new AnggotaTetap(id, nama, tanggalMulai, jumlahDipinjam);
-            tMap.put(id, (AnggotaTetap) anggota);
-        } else {
-            anggota = new AnggotaBulanan(id, nama, tanggalMulai, jumlahDipinjam);
-            bMap.put(id, (AnggotaBulanan) anggota);
-        }
-        
+    public static void anggotaTetapBaru(String id, String nama, String tanggalMulai, int jumlahDipinjam){
+        AnggotaTetap anggotaTetap = new AnggotaTetap(id, nama, tanggalMulai, jumlahDipinjam);
+        tMap.put(id, anggotaTetap);
     }
 
-    public static void pinjamBuku(String idBuku, String idAnggota){
+    public static void anggotaBulananBaru(String id, String nama, String tanggalMulai, int jumlahDipinjam){
+        AnggotaBulanan anggotaBulanan = new AnggotaBulanan(id, nama, tanggalMulai, jumlahDipinjam);
+        bMap.put(id, anggotaBulanan);
+    }
+
+    public static void pinjamBukuTetap(String idBuku, String idAnggota){
         Buku buku = rakBuku.get(idBuku);
         AnggotaTetap anggotaTetap = tMap.get(idAnggota);
-        AnggotaBulanan anggotaBulanan = bMap.get(idAnggota);
-        if (buku != null) {
-            if (anggotaTetap != null) {
-                anggotaTetap.tambahBuku(buku);
-            } else if (anggotaBulanan != null) {
-                anggotaBulanan.tambahBuku(buku);
-            }
+        if (buku != null && anggotaTetap != null) {
+            anggotaTetap.tambahBuku(buku);
         }
     }
 
-    public static void kembalikanBuku(String idBuku, String idAnggota){
+    public static void pinjamBukuBulanan(String idBuku, String idAnggota){
+        Buku buku = rakBuku.get(idBuku);
+        AnggotaBulanan anggotaBulanan = bMap.get(idAnggota);
+        if (buku != null && anggotaBulanan != null) {
+            anggotaBulanan.tambahBuku(buku);
+        }
+    }
+
+    public static void kembalikanBukuTetap(String idBuku, String idAnggota){
         Buku buku = rakBuku.get(idBuku);
         AnggotaTetap anggotaTetap = tMap.get(idAnggota);
+        if (buku != null && anggotaTetap != null) {
+            anggotaTetap.hapusBuku(buku);
+        }
+    }
+
+    public static void kembalikanBukuBulanan(String idBuku, String idAnggota){
+        Buku buku = rakBuku.get(idBuku);
         AnggotaBulanan anggotaBulanan = bMap.get(idAnggota);
-        if (buku != null) {
-            if (anggotaTetap != null) {
-                anggotaTetap.hapusBuku(buku);
-            } else if (anggotaBulanan != null) {
-                anggotaBulanan.hapusBuku(buku);
-            }
+        if (buku != null && anggotaBulanan != null) {
+            anggotaBulanan.hapusBuku(buku);
         }
     }
 }
+
