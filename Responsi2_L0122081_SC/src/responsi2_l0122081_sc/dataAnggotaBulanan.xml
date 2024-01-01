@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+
+<AnggotaBulananData>
+    <AnggotaBulanan id="AB001" nama="Alice Johnson" tanggalMulai="2022-03-10" jumlahPinjam="3" />
+    <AnggotaBulanan id="AB002" nama="Bob Williams" tanggalMulai="2022-04-20" jumlahPinjam="0" />
+</AnggotaBulananData>
+

@@ -1,0 +1,20 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package responsi2_l0122081_sc;
+import java.util.HashMap;
+
+/**
+ *
+ * @author franklynical
+ */
+
+
+public class User {
+    public static HashMap<String, String> users = new HashMap<>();
+    
+    public static void addUser(String username, String password){
+        users.put(username, password);
+    }
+}

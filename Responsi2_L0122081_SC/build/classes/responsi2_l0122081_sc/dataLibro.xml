@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+<LibrarySystemData>
+    <!-- Anggota Data -->
+    <AnggotaData>
+        <AnggotaTetap> 
+            <id>T001</id>
+            <nama>John Doe</nama>
+            <tanggalMulai>"2023-01-01"</tanggalMulai>
+            <jumlahPunjam>1</jumlahPunjam>
+        </AnggotaTetap>
+        <AnggotaBulanan>
+            <id>B001</id>
+            <nama>Jane Smith</nama>
+            <tanggalMulai>"2023-02-01"</tanggalMulai>
+            <jumlahPunjam>0</jumlahPunjam>
+        </AnggotaBulanan>
+        <!-- Add more Anggota entries as needed -->
+    </AnggotaData>
+
+    <!-- Buku Data -->
+    <BukuData>
+        <Buku>
+            <id>B001</id> 
+            <judul>The Catcher in the Rye</judul>
+            <tahun>1951</tahun> 
+            <tersedia>true</tersedia>
+        </Buku>
+        <Buku>
+            <id>B002</id> 
+            <judul>To Kill a Mockingbird</judul>
+            <tahun>1960</tahun> 
+            <tersedia>false</tersedia>
+            <Peminjam>
+                <anggotaId>T001</anggotaId>
+                <tanggalDipinjam>2023-01-10</tanggalDipinjam>
+            </Peminjam>
+        </Buku>
+        <!-- Add more Buku entries as needed -->
+    </BukuData>
+</LibrarySystemData>
+
