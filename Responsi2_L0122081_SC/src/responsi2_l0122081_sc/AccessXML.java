@@ -56,19 +56,11 @@ public class AccessXML {
 
                     String id = anggotaElement.getAttribute("id");
                     String nama = anggotaElement.getAttribute("nama");
-                    String tanggalMulaiString = anggotaElement.getAttribute("tanggalMulai");
-                    LocalDate tanggalMulai;
 
-                    if (!tanggalMulaiString.isEmpty()) {
-                        tanggalMulai = LocalDate.parse(tanggalMulaiString);
-                    } else {
-                        tanggalMulaiString = LocalDate.now().toString();
-                        continue;
-                    }
-                    int jumlahPinjam = Integer.parseInt(anggotaElement.getAttribute("jumlahPinjam"));
+                    String jumlahPinjamAttribute = anggotaElement.getAttribute("jumlahPinjam");
 
-                    AnggotaTetap anggota = new AnggotaTetap(id, nama, tanggalMulai, jumlahPinjam);
-                    anggota.date = tanggalMulaiString;
+                    int jumlahPinjam = (jumlahPinjamAttribute.isEmpty()) ? 0 : Integer.parseInt(jumlahPinjamAttribute);
+                    AnggotaTetap anggota = new AnggotaTetap(id, nama, jumlahPinjam);
                     anggota.jumlahPinjam = jumlahPinjam;
 
                     Pinjam.tMap.put(id, anggota);
@@ -98,19 +90,10 @@ public class AccessXML {
 
                     String id = anggotaElement.getAttribute("id");
                     String nama = anggotaElement.getAttribute("nama");
-                    String tanggalMulaiString = anggotaElement.getAttribute("tanggalMulai");
-                    LocalDate tanggalMulai;
+                    String jumlahPinjamAttribute = anggotaElement.getAttribute("jumlahPinjam");
 
-                    if (!tanggalMulaiString.isEmpty()) {
-                        tanggalMulai = LocalDate.parse(tanggalMulaiString);
-                    } else {
-                        tanggalMulaiString = LocalDate.now().toString();
-                        continue;
-                    }
-                    int jumlahPinjam = Integer.parseInt(anggotaElement.getAttribute("jumlahPinjam"));
-
-                    AnggotaBulanan anggota = new AnggotaBulanan(id, nama, tanggalMulai, jumlahPinjam);
-                    anggota.date = tanggalMulaiString;
+                    int jumlahPinjam = (jumlahPinjamAttribute.isEmpty()) ? 0 : Integer.parseInt(jumlahPinjamAttribute);
+                    AnggotaBulanan anggota = new AnggotaBulanan(id, nama, jumlahPinjam);
                     anggota.jumlahPinjam = jumlahPinjam;
 
                     Pinjam.bMap.put(id, anggota);
@@ -145,15 +128,6 @@ public class AccessXML {
 
                     Buku buku = new Buku(id, judul, tahun);
                     buku.tersedia = tersedia;
-
-                    NodeList peminjamNodes = bukuElement.getElementsByTagName("Peminjam");
-                    if (peminjamNodes != null && peminjamNodes.getLength() > 0) {
-                        Element peminjamElement = (Element) peminjamNodes.item(0);
-                        String anggotaId = peminjamElement.getAttribute("anggotaId");
-                        LocalDate tanggalDipinjam = LocalDate.parse(peminjamElement.getAttribute("tanggalDipinjam"));
-
-                        buku.tanggalDipinjam = tanggalDipinjam;
-                    }
 
                     Pinjam.rakBuku.put(id, buku);
                 }
@@ -227,7 +201,6 @@ public class AccessXML {
             Anggota anggota = (Anggota) element;
             attributes.put("id", anggota.id);
             attributes.put("nama", anggota.nama);
-            attributes.put("tanggalMulai", anggota.date);
             attributes.put("jumlahPinjam", String.valueOf(anggota.jumlahPinjam));
         } else if (element instanceof Buku) {
             Buku buku = (Buku) element;
@@ -235,10 +208,8 @@ public class AccessXML {
             attributes.put("judul", buku.judul);
             attributes.put("tahun", String.valueOf(buku.tahun));
             attributes.put("tersedia", String.valueOf(buku.tersedia));
-            if (buku.tersedia = true) {
-                attributes.put("tanggalDipinjam", buku.tanggalDipinjam.toString());
-            }
-        } 
+        
+        }
         return attributes;
     }
 }

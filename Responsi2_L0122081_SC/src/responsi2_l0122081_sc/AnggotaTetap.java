@@ -1,7 +1,5 @@
 package responsi2_l0122081_sc;
 
-import java.time.LocalDate;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -13,10 +11,9 @@ import java.time.LocalDate;
  * @author franklynical
  */
 public class AnggotaTetap extends Anggota {
-    public void setAnggotaTetap(String id, String nama, LocalDate d, int jumlahDipinjam) {
+    public void setAnggotaTetap(String id, String nama, int jumlahDipinjam) {
     this.id = id;
     this.nama = nama;
-    String date = d.format(formatter);
     this.jumlahPinjam = jumlahDipinjam;
 }
     public String getID(){
@@ -25,10 +22,6 @@ public class AnggotaTetap extends Anggota {
     
     public String getNama(){
         return nama;
-    }
-    
-    public LocalDate getDate(){
-        return d;
     }
     
     public int getJumlahPinjam(){
@@ -48,8 +41,8 @@ public class AnggotaTetap extends Anggota {
         jumlahPinjam--;
     }
 
-    public AnggotaTetap(String iD, String nama, LocalDate d, int jumlahDipinjam) {
-        super(iD,nama,d,jumlahDipinjam);
+    public AnggotaTetap(String iD, String nama, int jumlahDipinjam) {
+        super(iD,nama,jumlahDipinjam);
     }
 
 }

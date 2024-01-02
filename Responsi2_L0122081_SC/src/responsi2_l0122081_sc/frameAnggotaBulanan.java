@@ -6,7 +6,6 @@ package responsi2_l0122081_sc;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.time.LocalDate;
 import javax.swing.border.Border;
 
 /**
@@ -168,15 +167,22 @@ public class frameAnggotaBulanan extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nama", "Tanggal Mulai", "Buku Dipinjam"
+                "ID", "Nama", "Buku DIpinjam"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -282,15 +288,12 @@ public class frameAnggotaBulanan extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         String iD=ID.getText();
         String nama = Nama.getText();
-        LocalDate l = LocalDate.now();
-        String s = l.toString();
         int jumlahDipinjam = 0;
-        boolean isTetap = true;
         javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
         AnggotaBulanan a = Pinjam.bMap.get(iD);
         
-        model.addRow(new Object[]{iD, nama, s, jumlahDipinjam});
-        a.setAnggotaBulanan(iD, nama, l , jumlahDipinjam);
+        model.addRow(new Object[]{iD, nama,  jumlahDipinjam});
+        a.setAnggotaBulanan(iD, nama, jumlahDipinjam);
         
         AccessXML.writeXML();
         jTable1.setModel(model);

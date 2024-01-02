@@ -4,8 +4,6 @@
  */
 package responsi2_l0122081_sc;
 
-import java.time.LocalDate;
-import java.util.HashMap;
 
 
 /**
@@ -14,10 +12,9 @@ import java.util.HashMap;
  */
 public class AnggotaBulanan extends Anggota{
     
-    public void setAnggotaBulanan(String id, String nama, LocalDate d, int jumlahDipinjam) {
+    public void setAnggotaBulanan(String id, String nama, int jumlahDipinjam) {
     this.id = id;
     this.nama = nama;
-    String date = d.format(formatter);
     this.jumlahPinjam = jumlahDipinjam;
     }
     
@@ -29,17 +26,14 @@ public class AnggotaBulanan extends Anggota{
         return nama;
     }
     
-    public LocalDate getDate(){
-        return d;
-    }
     
     public int getJumlahPinjam(){
         return jumlahPinjam;
     }
     
     
-    public AnggotaBulanan(String id, String nama, LocalDate l, int jumlahDipinjam){
-        super(id,nama,l,jumlahDipinjam);
+    public AnggotaBulanan(String id, String nama, int jumlahDipinjam){
+        super(id,nama,jumlahDipinjam);
     }
     
     public void tambahBuku(Buku buku) {

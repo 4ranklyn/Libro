@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package responsi2_l0122081_sc;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 /**
  *
@@ -23,13 +21,13 @@ public class Pinjam {
         rakBuku.put(id, buku);
     }
 
-    public static void anggotaTetapBaru(String id, String nama, LocalDate tanggalMulai, int jumlahDipinjam){
-        AnggotaTetap anggotaTetap = new AnggotaTetap(id, nama, tanggalMulai, jumlahDipinjam);
+    public static void anggotaTetapBaru(String id, String nama, int jumlahDipinjam){
+        AnggotaTetap anggotaTetap = new AnggotaTetap(id, nama, jumlahDipinjam);
         tMap.put(id, anggotaTetap);
     }
 
-    public static void anggotaBulananBaru(String id, String nama, LocalDate tanggalMulai, int jumlahDipinjam){
-        AnggotaBulanan anggotaBulanan = new AnggotaBulanan(id, nama, tanggalMulai, jumlahDipinjam);
+    public static void anggotaBulananBaru(String id, String nama, int jumlahDipinjam){
+        AnggotaBulanan anggotaBulanan = new AnggotaBulanan(id, nama, jumlahDipinjam);
         bMap.put(id, anggotaBulanan);
     }
 

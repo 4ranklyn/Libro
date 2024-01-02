@@ -6,7 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 
 
 <AnggotaBulananData>
-    <AnggotaBulanan id="AB001" nama="Alice Johnson" tanggalMulai="2022-03-10" jumlahPinjam="3" />
-    <AnggotaBulanan id="AB002" nama="Bob Williams" tanggalMulai="2022-04-20" jumlahPinjam="0" />
+    <AnggotaBulanan id="AB001" nama="Alice Johnson" jumlahPinjam="0" />
+    <AnggotaBulanan id="AB002" nama="Bob Williams"  jumlahPinjam="0" />
 </AnggotaBulananData>
 

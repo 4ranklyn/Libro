@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package responsi2_l0122081_sc;
-import java.time.LocalDate;
 
 /**
  *
@@ -13,7 +12,6 @@ public class Buku{
     protected String id;
     protected String judul;
     protected int tahun;
-    protected LocalDate tanggalDipinjam;
     protected boolean tersedia;
     
     public Buku(String id, String judul, int tahun) {

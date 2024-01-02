@@ -13,7 +13,6 @@ import javax.swing.text.Document;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
-import java.time.LocalDate;
 
 /**
  *
@@ -57,13 +56,12 @@ public class frameAnggotaTetap extends javax.swing.JFrame {
                 if (column != 0) {
                     String id = model.getValueAt(row, 0).toString();
                     String nama = model.getValueAt(row, 1).toString();
-                    LocalDate date = LocalDate.now();
-                    String d = model.getValueAt(row, 2).toString();
-                    int jumlahPinjam = (int) model.getValueAt(row, 3);
+
+                    int jumlahPinjam = (int) model.getValueAt(row, 2);
 
                     AnggotaTetap anggota = Pinjam.tMap.get(id);
                     if (anggota != null) {
-                        anggota.setAnggotaTetap(id, nama, date, jumlahPinjam);
+                        anggota.setAnggotaTetap(id, nama, jumlahPinjam);
                         AccessXML.writeXML();
                     }
                 }
@@ -72,7 +70,7 @@ public class frameAnggotaTetap extends javax.swing.JFrame {
         
         for(String id : Pinjam.tMap.keySet()){
             AnggotaTetap at = Pinjam.tMap.get(id);
-            model.addRow(new Object[]{id, at.getName(), at.getDate().toString(), at.getJumlahPinjam()});
+            model.addRow(new Object[]{id, at.getName(), at.getJumlahPinjam()});
         }
     }
 
@@ -243,14 +241,14 @@ public class frameAnggotaTetap extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nama", "Tanggal Mulai", "Buku Dipinjam"
+                "ID", "Nama", "Buku Dipinjam"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, false, true
+                false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -370,14 +368,12 @@ public class frameAnggotaTetap extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         String iD=ID.getText();
         String nama = Nama.getText();
-        LocalDate l = LocalDate.now();
-        String s = l.toString();
         int jumlahDipinjam = 0;
         javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
         AnggotaTetap a = Pinjam.tMap.get(iD);
         
-        model.addRow(new Object[]{iD, nama, s, jumlahDipinjam});
-        a.setAnggotaTetap(iD, nama, l , jumlahDipinjam);
+        model.addRow(new Object[]{iD, nama, jumlahDipinjam});
+        a.setAnggotaTetap(iD, nama, jumlahDipinjam);
         
         AccessXML.writeXML();
         jTable1.setModel(model);

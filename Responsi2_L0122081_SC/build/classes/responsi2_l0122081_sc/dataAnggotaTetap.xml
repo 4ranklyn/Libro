@@ -7,13 +7,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
     <AnggotaTetap> 
         <id>AT001</id>
         <nama>John Doe</nama>
-        <tanggalMulai>2022-01-01</tanggalMulai>
         <jumlahPinjam>1</jumlahPinjam> 
     </AnggotaTetap>
         <AnggotaTetap> 
         <id>AT002</id>
         <nama>Jane Smith</nama>
-        <tanggalMulai>2022-02-01</tanggalMulai>
         <jumlahPinjam>0</jumlahPinjam> 
     </AnggotaTetap>
 </AnggotaTetapData>

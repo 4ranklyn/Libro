@@ -6,8 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 
 <BukuData>
     <Buku id="B001" judul="The Art of Programming" tahun="2020" tersedia="true" />
-    <Buku id="B002" judul="Introduction to Java" tahun="2019" tersedia="false"
-          tanggalDipinjam="2022-01-15" />
+    <Buku id="B002" judul="Introduction to Java" tahun="2019" tersedia="false"  />
 
     <Buku id="B003" judul="Data Structures in C++" tahun="2021" tersedia="true" />
 </BukuData>
