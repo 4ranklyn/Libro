@@ -35,14 +35,14 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="ID" min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="Nama" min="-2" pref="80" max="-2" attributes="0"/>
+                          <Component id="IDa" min="-2" pref="80" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="p" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="k" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -64,13 +64,13 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Nama" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="IDa" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="k" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="p" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="39" max="32767" attributes="0"/>
               <Component id="jButton3" min="-2" max="-2" attributes="0"/>
@@ -96,7 +96,7 @@
         <Property name="text" type="java.lang.String" value="ID Buku"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="Nama">
+    <Component class="javax.swing.JTextField" name="IDa">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="e0" green="ee" red="f4" type="rgb"/>
@@ -109,7 +109,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NamaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IDaActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextField(){&#xa;    @Override protected void paintComponent(Graphics g) {&#xa;        Border b = getBorder();&#xa;        if (!isOpaque() &amp;&amp; b instanceof RoundedCornerBorder) {&#xa;            Graphics2D g2 = (Graphics2D) g.create();&#xa;            g2.setPaint(getBackground());&#xa;            int w = getWidth() - 1;&#xa;            int h = getHeight() - 1;&#xa;            g2.fill(((RoundedCornerBorder) b).getBorderShape(0, 0, w, h));&#xa;            g2.dispose();&#xa;        }&#xa;        super.paintComponent(g);&#xa;    }&#xa;&#xa;    @Override public void updateUI() {&#xa;        super.updateUI();&#xa;        setOpaque(false);&#xa;        setBorder(new RoundedCornerBorder(8));&#xa;    }&#xa;}&#xa;"/>
@@ -131,7 +131,7 @@
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextField(){&#xa;    @Override protected void paintComponent(Graphics g) {&#xa;        Border b = getBorder();&#xa;        if (!isOpaque() &amp;&amp; b instanceof RoundedCornerBorder) {&#xa;            Graphics2D g2 = (Graphics2D) g.create();&#xa;            g2.setPaint(getBackground());&#xa;            int w = getWidth() - 1;&#xa;            int h = getHeight() - 1;&#xa;            g2.fill(((RoundedCornerBorder) b).getBorderShape(0, 0, w, h));&#xa;            g2.dispose();&#xa;        }&#xa;        super.paintComponent(g);&#xa;    }&#xa;&#xa;    @Override public void updateUI() {&#xa;        super.updateUI();&#xa;        setOpaque(false);&#xa;        setBorder(new RoundedCornerBorder(8));&#xa;    }&#xa;}&#xa;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="k">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="e0" green="ee" red="f4" type="rgb"/>
@@ -145,14 +145,14 @@
         <Property name="text" type="java.lang.String" value="Kembalikan"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="kMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(){&#xa;    @Override protected void paintComponent(Graphics g) {&#xa;        Border b = getBorder();&#xa;        if (!isOpaque() &amp;&amp; b instanceof RoundedCornerBorder) {&#xa;            Graphics2D g2 = (Graphics2D) g.create();&#xa;            g2.setPaint(getBackground());&#xa;            int w = getWidth() - 1;&#xa;            int h = getHeight() - 1;&#xa;            g2.fill(((RoundedCornerBorder) b).getBorderShape(0, 0, w, h));&#xa;            g2.dispose();&#xa;        }&#xa;        super.paintComponent(g);&#xa;    }&#xa;&#xa;    @Override public void updateUI() {&#xa;        super.updateUI();&#xa;        setOpaque(false);&#xa;        setBorder(new RoundedCornerBorder(8));&#xa;    }&#xa;}&#xa;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="p">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="e0" green="ee" red="f4" type="rgb"/>
@@ -166,8 +166,8 @@
         <Property name="text" type="java.lang.String" value="Pinjam"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(){&#xa;    @Override protected void paintComponent(Graphics g) {&#xa;        Border b = getBorder();&#xa;        if (!isOpaque() &amp;&amp; b instanceof RoundedCornerBorder) {&#xa;            Graphics2D g2 = (Graphics2D) g.create();&#xa;            g2.setPaint(getBackground());&#xa;            int w = getWidth() - 1;&#xa;            int h = getHeight() - 1;&#xa;            g2.fill(((RoundedCornerBorder) b).getBorderShape(0, 0, w, h));&#xa;            g2.dispose();&#xa;        }&#xa;        super.paintComponent(g);&#xa;    }&#xa;&#xa;    @Override public void updateUI() {&#xa;        super.updateUI();&#xa;        setOpaque(false);&#xa;        setBorder(new RoundedCornerBorder(8));&#xa;    }&#xa;}&#xa;"/>

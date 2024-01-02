@@ -7,6 +7,9 @@ package responsi2_l0122081_sc;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.border.Border;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.Document;
 
 /**
  *
@@ -14,13 +17,82 @@ import javax.swing.border.Border;
  */
 
 public class frameAnggotaBulanan extends javax.swing.JFrame {
-
+    
+    private boolean addAble = true;
     /**
      * Creates new form frameAnggota
      */
     public frameAnggotaBulanan() {
+        AccessXML.readXML();
         initComponents();
         getContentPane().setBackground(new java.awt.Color(57, 54, 70));
+        Document docID = ID.getDocument();
+        docID.addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                checkID();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                checkID();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+            }
+        });
+
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+        model.addTableModelListener(e -> {
+            if (e.getType() == javax.swing.event.TableModelEvent.UPDATE) {
+                int column = e.getColumn();
+                int row = e.getFirstRow();
+
+                // Check if the updated column is the desired column
+                if (column != 0) {
+                    String id = model.getValueAt(row, 0).toString();
+                    String nama = model.getValueAt(row, 1).toString();
+
+                    int jumlahPinjam = (int) model.getValueAt(row, 2);
+
+                    AnggotaBulanan anggota = Pinjam.bMap.get(id);
+                    if (anggota != null) {
+                        anggota.addData(id, nama);
+                        AccessXML.writeXML();
+                    }
+                }
+            }
+        });
+        
+        for(String id : Pinjam.bMap.keySet()){
+            AnggotaBulanan at = Pinjam.bMap.get(id);
+            model.addRow(new Object[]{id, at.getName(), at.getJumlahPinjam()});
+        }
+    }
+          
+        private void checkID() {
+        if (search()) {
+            addAble = false;
+            warning.setText("ID sudah digunakan");
+        } else {
+            addAble = true;
+            warning.setText("");
+        }
+    }
+ 
+
+
+    public boolean search() {
+        String id = ID.getText();
+        AnggotaTetap anggota = Pinjam.tMap.get(id);
+        if (anggota == null) {
+            Nama.setText("");
+            return false;
+        }
+
+        Nama.setText(anggota.getName());
+        return true;
     }
 
     /**
@@ -140,6 +212,7 @@ public class frameAnggotaBulanan extends javax.swing.JFrame {
             }
         }
         ;
+        warning = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -174,7 +247,7 @@ public class frameAnggotaBulanan extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                true, true, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -216,6 +289,10 @@ public class frameAnggotaBulanan extends javax.swing.JFrame {
             }
         });
 
+        warning.setFont(new java.awt.Font("Gotham Medium", 0, 12)); // NOI18N
+        warning.setForeground(new java.awt.Color(244, 238, 224));
+        warning.setText(".");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -225,10 +302,12 @@ public class frameAnggotaBulanan extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton3)
+                        .addGap(86, 86, 86)
+                        .addComponent(warning)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
@@ -248,10 +327,6 @@ public class frameAnggotaBulanan extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(47, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -262,9 +337,18 @@ public class frameAnggotaBulanan extends javax.swing.JFrame {
                             .addComponent(Nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(41, 41, 41)
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jButton3)
-                .addGap(18, 18, 18))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(47, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(warning)
+                        .addGap(38, 38, 38))))
         );
 
         pack();
@@ -293,7 +377,7 @@ public class frameAnggotaBulanan extends javax.swing.JFrame {
         AnggotaBulanan a = Pinjam.bMap.get(iD);
         
         model.addRow(new Object[]{iD, nama,  jumlahDipinjam});
-        a.setAnggotaBulanan(iD, nama, jumlahDipinjam);
+        Pinjam.anggotaBulananBaru(iD, nama, jumlahDipinjam);
         
         AccessXML.writeXML();
         jTable1.setModel(model);
@@ -344,5 +428,6 @@ public class frameAnggotaBulanan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel warning;
     // End of variables declaration//GEN-END:variables
 }

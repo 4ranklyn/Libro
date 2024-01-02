@@ -17,7 +17,7 @@ import javax.swing.border.Border;
 public class frameAnggota extends javax.swing.JFrame {
 
     /**
-     * Creates new form frameAnggota
+     * Creates a new instance of the frameAnggota class.
      */
     public frameAnggota() {
         initComponents();
@@ -205,7 +205,9 @@ public class frameAnggota extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3MouseClicked
 
     /**
-     * @param args the command line arguments
+     * The main method to launch the frameAnggota application.
+     *
+     * @param args The command line arguments.
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

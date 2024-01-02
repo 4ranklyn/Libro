@@ -34,7 +34,7 @@ public class framePinjam extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Nama = new javax.swing.JTextField(){
+        IDa = new javax.swing.JTextField(){
             @Override protected void paintComponent(Graphics g) {
                 Border b = getBorder();
                 if (!isOpaque() && b instanceof RoundedCornerBorder) {
@@ -76,7 +76,7 @@ public class framePinjam extends javax.swing.JFrame {
             }
         }
         ;
-        jButton1 = new javax.swing.JButton(){
+        k = new javax.swing.JButton(){
             @Override protected void paintComponent(Graphics g) {
                 Border b = getBorder();
                 if (!isOpaque() && b instanceof RoundedCornerBorder) {
@@ -97,7 +97,7 @@ public class framePinjam extends javax.swing.JFrame {
             }
         }
         ;
-        jButton2 = new javax.swing.JButton(){
+        p = new javax.swing.JButton(){
             @Override protected void paintComponent(Graphics g) {
                 Border b = getBorder();
                 if (!isOpaque() && b instanceof RoundedCornerBorder) {
@@ -149,12 +149,12 @@ public class framePinjam extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(244, 238, 224));
         jLabel2.setText("ID Buku");
 
-        Nama.setBackground(new java.awt.Color(244, 238, 224));
-        Nama.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
-        Nama.setForeground(new java.awt.Color(109, 93, 110));
-        Nama.addActionListener(new java.awt.event.ActionListener() {
+        IDa.setBackground(new java.awt.Color(244, 238, 224));
+        IDa.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
+        IDa.setForeground(new java.awt.Color(109, 93, 110));
+        IDa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NamaActionPerformed(evt);
+                IDaActionPerformed(evt);
             }
         });
 
@@ -162,33 +162,33 @@ public class framePinjam extends javax.swing.JFrame {
         ID.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
         ID.setForeground(new java.awt.Color(109, 93, 110));
 
-        jButton1.setBackground(new java.awt.Color(244, 238, 224));
-        jButton1.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(109, 93, 110));
-        jButton1.setText("Kembalikan");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        k.setBackground(new java.awt.Color(244, 238, 224));
+        k.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
+        k.setForeground(new java.awt.Color(109, 93, 110));
+        k.setText("Kembalikan");
+        k.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                kMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        k.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                kActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(244, 238, 224));
-        jButton2.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(109, 93, 110));
-        jButton2.setText("Pinjam");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        p.setBackground(new java.awt.Color(244, 238, 224));
+        p.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
+        p.setForeground(new java.awt.Color(109, 93, 110));
+        p.setText("Pinjam");
+        p.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                pMouseClicked(evt);
             }
         });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        p.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                pActionPerformed(evt);
             }
         });
 
@@ -221,12 +221,12 @@ public class framePinjam extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Nama, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(IDa, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(135, 135, 135))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(p)
                         .addGap(67, 67, 67)
-                        .addComponent(jButton1)
+                        .addComponent(k)
                         .addGap(73, 73, 73))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
@@ -242,12 +242,12 @@ public class framePinjam extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IDa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(k)
+                    .addComponent(p))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(20, 20, 20))
@@ -256,25 +256,39 @@ public class framePinjam extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamaActionPerformed
+    private void IDaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NamaActionPerformed
+    }//GEN-LAST:event_IDaActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void kMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kMouseClicked
+        String idBuku = ID.getText();
+        String idAnggota = IDa.getText();
+        if (idAnggota.matches("[A][T][0-9]{3}")){
+            Pinjam.kembalikanBukuTetap(idBuku, idAnggota);
+        } else {
+            Pinjam.kembalikanBukuBulanan(idBuku, idAnggota);
+        }
+        AccessXML.writeXML();
+    }//GEN-LAST:event_kMouseClicked
 
-    }//GEN-LAST:event_jButton1MouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void kActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_kActionPerformed
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2MouseClicked
+    private void pMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pMouseClicked
+        String idBuku = ID.getText();
+        String idAnggota = IDa.getText();
+        if (idAnggota.matches("[A][T][0-9]{3}")){
+            Pinjam.pinjamBukuTetap(idBuku, idAnggota);
+        } else {
+            Pinjam.pinjamBukuBulanan(idBuku, idAnggota);
+        }
+        AccessXML.writeXML();
+    }//GEN-LAST:event_pMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_pActionPerformed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         AccessXML.writeXML();
@@ -324,11 +338,11 @@ public class framePinjam extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ID;
-    private javax.swing.JTextField Nama;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTextField IDa;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton k;
+    private javax.swing.JButton p;
     // End of variables declaration//GEN-END:variables
 }

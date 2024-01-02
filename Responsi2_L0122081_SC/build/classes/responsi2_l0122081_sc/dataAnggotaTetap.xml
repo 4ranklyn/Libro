@@ -1,5 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
-<AnggotaTetapData>
-    <AnggotaTetap id="AT003" jumlahPinjam="0" nama="mArtha"/>
-</AnggotaTetapData>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><AnggotaTetapData><AnggotaTetap id="AT001" jumlahPinjam="0" nama="Jim"/><AnggotaTetap id="AT002" jumlahPinjam="0" nama="Nicholas Stanford"/><AnggotaTetap id="AT003" jumlahPinjam="0" nama="Martha"/></AnggotaTetapData>

@@ -61,7 +61,7 @@ public class frameAnggotaTetap extends javax.swing.JFrame {
 
                     AnggotaTetap anggota = Pinjam.tMap.get(id);
                     if (anggota != null) {
-                        anggota.setAnggotaTetap(id, nama, jumlahPinjam);
+                        anggota.addData(id, nama);
                         AccessXML.writeXML();
                     }
                 }
@@ -248,7 +248,7 @@ public class frameAnggotaTetap extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {

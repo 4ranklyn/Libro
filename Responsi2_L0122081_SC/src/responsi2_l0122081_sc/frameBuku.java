@@ -7,6 +7,9 @@ package responsi2_l0122081_sc;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.border.Border;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.Document;
 
 /**
  *
@@ -15,13 +18,79 @@ import javax.swing.border.Border;
 
 
 public class frameBuku extends javax.swing.JFrame {
-
+    private boolean addAble = true;
     /**
      * Creates new form frameBuku
      */
     public frameBuku() {
+        AccessXML.readXML();
         initComponents();
         getContentPane().setBackground(new java.awt.Color(57, 54, 70));
+        Document docID = ID.getDocument();
+        docID.addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                checkID();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                checkID();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+            }
+        });
+
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+        model.addTableModelListener(e -> {
+            if (e.getType() == javax.swing.event.TableModelEvent.UPDATE) {
+                int column = e.getColumn();
+                int row = e.getFirstRow();
+
+                // Check if the updated column is the desired column
+                if (column != 0) {
+                    String id = model.getValueAt(row, 0).toString();
+                    String judul = model.getValueAt(row, 1).toString();
+
+                    int tahun = (int) model.getValueAt(row, 2);
+                    boolean tersedia = (boolean) model.getValueAt(row, 2);
+                    Buku buku = Pinjam.rakBuku.get(id);
+                    if (buku != null) {
+                        buku.bukuBaru(id, judul, tahun, tersedia);
+                        AccessXML.writeXML();
+                    }
+                }
+            }
+        });
+        
+        for(String id : Pinjam.rakBuku.keySet()){
+            Buku b = Pinjam.rakBuku.get(id);
+            model.addRow(new Object[]{id, b.getJudul(), b.getTahun(), b.getTersedia()});
+        }
+    }
+
+    private void checkID() {
+        if (search()) {
+            addAble = false;
+            warning.setText("ID sudah digunakan");
+        } else {
+            addAble = true;
+            warning.setText("");
+        }
+    }
+
+    public boolean search() {
+        String id = ID.getText();
+        AnggotaTetap anggota = Pinjam.tMap.get(id);
+        if (anggota == null) {
+            Nama.setText("");
+            return false;
+        }
+
+        Nama.setText(anggota.getName());
+        return true;
     }
 
     /**
@@ -56,21 +125,121 @@ public class frameBuku extends javax.swing.JFrame {
             }
         }
         ;
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        Nama = new javax.swing.JTextField(){
+            @Override protected void paintComponent(Graphics g) {
+                Border b = getBorder();
+                if (!isOpaque() && b instanceof RoundedCornerBorder) {
+                    Graphics2D g2 = (Graphics2D) g.create();
+                    g2.setPaint(getBackground());
+                    int w = getWidth() - 1;
+                    int h = getHeight() - 1;
+                    g2.fill(((RoundedCornerBorder) b).getBorderShape(0, 0, w, h));
+                    g2.dispose();
+                }
+                super.paintComponent(g);
+            }
+
+            @Override public void updateUI() {
+                super.updateUI();
+                setOpaque(false);
+                setBorder(new RoundedCornerBorder(8));
+            }
+        }
+        ;
+        ID = new javax.swing.JTextField(){
+            @Override protected void paintComponent(Graphics g) {
+                Border b = getBorder();
+                if (!isOpaque() && b instanceof RoundedCornerBorder) {
+                    Graphics2D g2 = (Graphics2D) g.create();
+                    g2.setPaint(getBackground());
+                    int w = getWidth() - 1;
+                    int h = getHeight() - 1;
+                    g2.fill(((RoundedCornerBorder) b).getBorderShape(0, 0, w, h));
+                    g2.dispose();
+                }
+                super.paintComponent(g);
+            }
+
+            @Override public void updateUI() {
+                super.updateUI();
+                setOpaque(false);
+                setBorder(new RoundedCornerBorder(8));
+            }
+        }
+        ;
+        Tahun = new javax.swing.JTextField(){
+            @Override protected void paintComponent(Graphics g) {
+                Border b = getBorder();
+                if (!isOpaque() && b instanceof RoundedCornerBorder) {
+                    Graphics2D g2 = (Graphics2D) g.create();
+                    g2.setPaint(getBackground());
+                    int w = getWidth() - 1;
+                    int h = getHeight() - 1;
+                    g2.fill(((RoundedCornerBorder) b).getBorderShape(0, 0, w, h));
+                    g2.dispose();
+                }
+                super.paintComponent(g);
+            }
+
+            @Override public void updateUI() {
+                super.updateUI();
+                setOpaque(false);
+                setBorder(new RoundedCornerBorder(8));
+            }
+        }
+        ;
+        jButton1 = new javax.swing.JButton(){
+            @Override protected void paintComponent(Graphics g) {
+                Border b = getBorder();
+                if (!isOpaque() && b instanceof RoundedCornerBorder) {
+                    Graphics2D g2 = (Graphics2D) g.create();
+                    g2.setPaint(getBackground());
+                    int w = getWidth() - 1;
+                    int h = getHeight() - 1;
+                    g2.fill(((RoundedCornerBorder) b).getBorderShape(0, 0, w, h));
+                    g2.dispose();
+                }
+                super.paintComponent(g);
+            }
+
+            @Override public void updateUI() {
+                super.updateUI();
+                setOpaque(false);
+                setBorder(new RoundedCornerBorder(8));
+            }
+        }
+        ;
+        jLabel3 = new javax.swing.JLabel();
+        warning = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Judul", "Tahun", "Tersedia"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton3.setBackground(new java.awt.Color(244, 238, 224));
@@ -88,27 +257,115 @@ public class frameBuku extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(244, 238, 224));
+        jLabel1.setText("Nama");
+
+        jLabel2.setForeground(new java.awt.Color(244, 238, 224));
+        jLabel2.setText("ID");
+
+        Nama.setBackground(new java.awt.Color(244, 238, 224));
+        Nama.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
+        Nama.setForeground(new java.awt.Color(109, 93, 110));
+        Nama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NamaActionPerformed(evt);
+            }
+        });
+
+        ID.setBackground(new java.awt.Color(244, 238, 224));
+        ID.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
+        ID.setForeground(new java.awt.Color(109, 93, 110));
+
+        Tahun.setBackground(new java.awt.Color(244, 238, 224));
+        Tahun.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
+        Tahun.setForeground(new java.awt.Color(109, 93, 110));
+        Tahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TahunActionPerformed(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(244, 238, 224));
+        jButton1.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(109, 93, 110));
+        jButton1.setText("Tambah");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jLabel3.setForeground(new java.awt.Color(244, 238, 224));
+        jLabel3.setText("Tahun");
+
+        warning.setFont(new java.awt.Font("Gotham Medium", 0, 12)); // NOI18N
+        warning.setForeground(new java.awt.Color(244, 238, 224));
+        warning.setText(".");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(288, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jButton3)
+                        .addGap(62, 62, 62)
+                        .addComponent(warning, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 220, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Nama)
+                                    .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(Tahun, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(48, 48, 48))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(71, 71, 71))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(32, 32, 32))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(Nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Tahun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(75, 75, 75)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(48, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(warning, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -124,6 +381,28 @@ public class frameBuku extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void NamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NamaActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        String iD= ID.getText();
+        String nama = Nama.getText();
+        int tahun = Integer.parseInt(Tahun.getText());
+        boolean tersedia = true;
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+
+        model.addRow(new Object[]{iD, nama, tahun, tersedia});
+        Pinjam.bukuBaru(iD, nama, tahun);
+
+        AccessXML.writeXML();
+        jTable1.setModel(model);
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void TahunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TahunActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TahunActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,8 +440,16 @@ public class frameBuku extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ID;
+    private javax.swing.JTextField Nama;
+    private javax.swing.JTextField Tahun;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel warning;
     // End of variables declaration//GEN-END:variables
 }

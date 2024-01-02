@@ -26,21 +26,35 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class AccessXML {
+/**
+ * The AccessXML class provides methods for reading and writing data from/to XML files.
+ * It includes methods for reading and writing data for AnggotaTetap, AnggotaBulanan, Buku, and User entities.
+ * The read and write operations are specifically implemented for each entity type.
+ */
 
+public class AccessXML {
+    /**
+     * Reads data from XML files for AnggotaTetap, AnggotaBulanan, Buku, and User.
+     */
     public static void readXML() {
         readAnggotaTetapXML("src/responsi2_l0122081_sc/dataAnggotaTetap.xml");
         readAnggotaBulananXML("src/responsi2_l0122081_sc/dataAnggotaBulanan.xml");
         readBukuXML("src/responsi2_l0122081_sc/dataBuku.xml");
         readUserXML("src/responsi2_l0122081_sc/dataUser.xml");
     }
-
+    /**
+     * Writes data to XML files for AnggotaTetap, AnggotaBulanan, and Buku.
+     */
     public static void writeXML() {
         writeAnggotaTetapXML("src/responsi2_l0122081_sc/dataAnggotaTetap.xml");
         writeAnggotaBulananXML("src/responsi2_l0122081_sc/dataAnggotaBulanan.xml");
         writeBukuXML("src/responsi2_l0122081_sc/dataBuku.xml");
     }
-
+    /**
+     * Reads AnggotaTetap data from the specified XML file and populates the Pinjam.tMap.
+     *
+     * @param filePath The path to the XML file containing AnggotaTetap data.
+     */
     private static void readAnggotaTetapXML(String filePath) {
         try {
             File xmlFile = new File(filePath);
@@ -70,11 +84,19 @@ public class AccessXML {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Writes AnggotaTetap data to the specified XML file using the Pinjam.tMap.
+     *
+     * @param filePath The path to the XML file where AnggotaTetap data will be written.
+     */
     private static void writeAnggotaTetapXML(String filePath) {
         writeXMLTemplate(filePath, Pinjam.tMap.values(), "AnggotaTetap");
     }
-
+    /**
+     * Reads AnggotaBulanan data from the specified XML file and populates the Pinjam.bMap.
+     *
+     * @param filePath The path to the XML file containing AnggotaBulanan data.
+     */
     private static void readAnggotaBulananXML(String filePath) {
         try {
             File xmlFile = new File(filePath);
@@ -103,11 +125,19 @@ public class AccessXML {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Writes AnggotaBulanan data to the specified XML file using the Pinjam.bMap.
+     *
+     * @param filePath The path to the XML file where AnggotaBulanan data will be written.
+     */
     private static void writeAnggotaBulananXML(String filePath) {
         writeXMLTemplate(filePath, Pinjam.bMap.values(), "AnggotaBulanan");
     }
-
+    /**
+     * Reads Buku data from the specified XML file and populates the Pinjam.rakBuku.
+     *
+     * @param filePath The path to the XML file containing Buku data.
+     */
     private static void readBukuXML(String filePath) {
         try {
             File xmlFile = new File(filePath);
@@ -136,11 +166,19 @@ public class AccessXML {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Writes Buku data to the specified XML file using the Pinjam.rakBuku.
+     *
+     * @param filePath The path to the XML file where Buku data will be written.
+     */
     private static void writeBukuXML(String filePath) {
         writeXMLTemplate(filePath, Pinjam.rakBuku.values(), "Buku");
     }
-
+    /**
+     * Reads User data from the specified XML file and populates the User data structure.
+     *
+     * @param filePath The path to the XML file containing User data.
+     */
     private static void readUserXML(String filePath) {
         try {
             File xmlFile = new File(filePath);
@@ -166,7 +204,14 @@ public class AccessXML {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Writes XML data for a generic entity using the specified file path and elements.
+     *
+     * @param filePath    The path to the XML file where data will be written.
+     * @param elements    The iterable collection of elements to be written.
+     * @param elementName The name of the XML element representing the entity.
+     * @param <T>         The type of the entity.
+     */
     private static <T> void writeXMLTemplate(String filePath, Iterable<T> elements, String elementName) {
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -194,7 +239,13 @@ public class AccessXML {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Gets the attributes of a generic entity for XML representation.
+     *
+     * @param element The entity for which attributes are to be obtained.
+     * @param <T>     The type of the entity.
+     * @return A map of attribute names and values.
+     */
     private static <T> Map<String, String> getAttributes(T element) {
         Map<String, String> attributes = new HashMap<>();
         if (element instanceof Anggota) {
