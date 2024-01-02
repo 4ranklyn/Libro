@@ -6,6 +6,7 @@ package responsi2_l0122081_sc;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.time.LocalDate;
 import javax.swing.border.Border;
 
 /**
@@ -140,27 +141,6 @@ public class frameAnggotaBulanan extends javax.swing.JFrame {
             }
         }
         ;
-        jButton2 = new javax.swing.JButton(){
-            @Override protected void paintComponent(Graphics g) {
-                Border b = getBorder();
-                if (!isOpaque() && b instanceof RoundedCornerBorder) {
-                    Graphics2D g2 = (Graphics2D) g.create();
-                    g2.setPaint(getBackground());
-                    int w = getWidth() - 1;
-                    int h = getHeight() - 1;
-                    g2.fill(((RoundedCornerBorder) b).getBorderShape(0, 0, w, h));
-                    g2.dispose();
-                }
-                super.paintComponent(g);
-            }
-
-            @Override public void updateUI() {
-                super.updateUI();
-                setOpaque(false);
-                setBorder(new RoundedCornerBorder(8));
-            }
-        }
-        ;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -216,11 +196,11 @@ public class frameAnggotaBulanan extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(109, 93, 110));
         jButton1.setText("Tambah");
-
-        jButton2.setBackground(new java.awt.Color(244, 238, 224));
-        jButton2.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(109, 93, 110));
-        jButton2.setText("Hapus");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -238,9 +218,7 @@ public class frameAnggotaBulanan extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING)))
+                                .addComponent(jButton1))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
@@ -270,8 +248,6 @@ public class frameAnggotaBulanan extends javax.swing.JFrame {
                             .addComponent(Nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(41, 41, 41)
                         .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jButton3)
                 .addGap(18, 18, 18))
@@ -294,6 +270,23 @@ public class frameAnggotaBulanan extends javax.swing.JFrame {
         fu.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        String iD=ID.getText();
+        String nama = Nama.getText();
+        LocalDate l = LocalDate.now();
+        String s = l.toString();
+        int jumlahDipinjam = 0;
+        boolean isTetap = true;
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+        AnggotaBulanan a = Pinjam.bMap.get(iD);
+        
+        model.addRow(new Object[]{iD, nama, s, jumlahDipinjam});
+        a.setAnggotaBulanan(iD, nama, l , jumlahDipinjam);
+        
+        AccessXML.writeXML();
+        jTable1.setModel(model);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -335,7 +328,6 @@ public class frameAnggotaBulanan extends javax.swing.JFrame {
     private javax.swing.JTextField ID;
     private javax.swing.JTextField Nama;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

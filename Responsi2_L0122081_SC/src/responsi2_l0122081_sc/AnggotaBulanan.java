@@ -14,6 +14,13 @@ import java.util.HashMap;
  */
 public class AnggotaBulanan extends Anggota{
     
+    public void setAnggotaBulanan(String id, String nama, LocalDate d, int jumlahDipinjam) {
+    this.id = id;
+    this.nama = nama;
+    String date = d.format(formatter);
+    this.jumlahPinjam = jumlahDipinjam;
+    }
+    
     public AnggotaBulanan(String id, String nama, LocalDate l, int jumlahDipinjam){
         super(id,nama,l,jumlahDipinjam);
     }

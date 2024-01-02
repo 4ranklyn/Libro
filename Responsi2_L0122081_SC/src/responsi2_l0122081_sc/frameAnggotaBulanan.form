@@ -37,10 +37,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -82,8 +79,6 @@
                       </Group>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -239,23 +234,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Tambah"/>
       </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(){&#xa;    @Override protected void paintComponent(Graphics g) {&#xa;        Border b = getBorder();&#xa;        if (!isOpaque() &amp;&amp; b instanceof RoundedCornerBorder) {&#xa;            Graphics2D g2 = (Graphics2D) g.create();&#xa;            g2.setPaint(getBackground());&#xa;            int w = getWidth() - 1;&#xa;            int h = getHeight() - 1;&#xa;            g2.fill(((RoundedCornerBorder) b).getBorderShape(0, 0, w, h));&#xa;            g2.dispose();&#xa;        }&#xa;        super.paintComponent(g);&#xa;    }&#xa;&#xa;    @Override public void updateUI() {&#xa;        super.updateUI();&#xa;        setOpaque(false);&#xa;        setBorder(new RoundedCornerBorder(8));&#xa;    }&#xa;}&#xa;"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="e0" green="ee" red="f4" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Gotham Light" size="12" style="0"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="6e" green="5d" red="6d" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Hapus"/>
-      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(){&#xa;    @Override protected void paintComponent(Graphics g) {&#xa;        Border b = getBorder();&#xa;        if (!isOpaque() &amp;&amp; b instanceof RoundedCornerBorder) {&#xa;            Graphics2D g2 = (Graphics2D) g.create();&#xa;            g2.setPaint(getBackground());&#xa;            int w = getWidth() - 1;&#xa;            int h = getHeight() - 1;&#xa;            g2.fill(((RoundedCornerBorder) b).getBorderShape(0, 0, w, h));&#xa;            g2.dispose();&#xa;        }&#xa;        super.paintComponent(g);&#xa;    }&#xa;&#xa;    @Override public void updateUI() {&#xa;        super.updateUI();&#xa;        setOpaque(false);&#xa;        setBorder(new RoundedCornerBorder(8));&#xa;    }&#xa;}&#xa;"/>
       </AuxValues>
