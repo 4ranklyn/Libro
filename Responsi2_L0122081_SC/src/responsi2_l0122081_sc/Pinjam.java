@@ -23,12 +23,12 @@ public class Pinjam {
         rakBuku.put(id, buku);
     }
 
-    public static void anggotaTetapBaru(String id, String nama, String tanggalMulai, int jumlahDipinjam){
+    public static void anggotaTetapBaru(String id, String nama, LocalDate tanggalMulai, int jumlahDipinjam){
         AnggotaTetap anggotaTetap = new AnggotaTetap(id, nama, tanggalMulai, jumlahDipinjam);
         tMap.put(id, anggotaTetap);
     }
 
-    public static void anggotaBulananBaru(String id, String nama, String tanggalMulai, int jumlahDipinjam){
+    public static void anggotaBulananBaru(String id, String nama, LocalDate tanggalMulai, int jumlahDipinjam){
         AnggotaBulanan anggotaBulanan = new AnggotaBulanan(id, nama, tanggalMulai, jumlahDipinjam);
         bMap.put(id, anggotaBulanan);
     }

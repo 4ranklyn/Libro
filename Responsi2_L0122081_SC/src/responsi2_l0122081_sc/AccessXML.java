@@ -8,27 +8,11 @@ package responsi2_l0122081_sc;
  *
  * @author franklynical
  */
-import java.io.File;
-import java.time.LocalDate;
-import java.util.HashMap;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 import java.io.File;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -72,11 +56,11 @@ public class AccessXML {
 
                     String id = anggotaElement.getAttribute("id");
                     String nama = anggotaElement.getAttribute("nama");
-                    String tanggalMulai = anggotaElement.getAttribute("tanggalMulai");
+                    LocalDate tanggalMulai = LocalDate.parse(anggotaElement.getAttribute("tanggalMulai"));
                     int jumlahPinjam = Integer.parseInt(anggotaElement.getAttribute("jumlahPinjam"));
 
                     AnggotaTetap anggota = new AnggotaTetap(id, nama, tanggalMulai, jumlahPinjam);
-                    anggota.date = tanggalMulai;
+                    anggota.date = tanggalMulai.toString();
                     anggota.jumlahPinjam = jumlahPinjam;
 
                     Pinjam.tMap.put(id, anggota);
@@ -106,12 +90,12 @@ public class AccessXML {
 
                     String id = anggotaElement.getAttribute("id");
                     String nama = anggotaElement.getAttribute("nama");
-                    String tanggalMulai;
-                    tanggalMulai = anggotaElement.getAttribute("tanggalMulai");
+                    LocalDate tanggalMulai;
+                    tanggalMulai = LocalDate.parse(anggotaElement.getAttribute("tanggalMulai"));
                     int jumlahPinjam = Integer.parseInt(anggotaElement.getAttribute("jumlahPinjam"));
 
                     AnggotaBulanan anggota = new AnggotaBulanan(id, nama, tanggalMulai, jumlahPinjam);
-                    anggota.date = tanggalMulai;
+                    anggota.date = tanggalMulai.toString();
                     anggota.jumlahPinjam = jumlahPinjam;
 
                     Pinjam.bMap.put(id, anggota);
@@ -228,7 +212,7 @@ public class AccessXML {
             Anggota anggota = (Anggota) element;
             attributes.put("id", anggota.id);
             attributes.put("nama", anggota.nama);
-            attributes.put("tanggalMulai", anggota.date.toString());
+            attributes.put("tanggalMulai", anggota.date);
             attributes.put("jumlahPinjam", String.valueOf(anggota.jumlahPinjam));
         } else if (element instanceof Buku) {
             Buku buku = (Buku) element;
@@ -239,11 +223,7 @@ public class AccessXML {
             if (buku.tersedia = true) {
                 attributes.put("tanggalDipinjam", buku.tanggalDipinjam.toString());
             }
-        } else if (element instanceof User) {
-            Map.Entry<String, String> userEntry = (Map.Entry<String, String>) element;
-            attributes.put("username", userEntry.getKey());
-            attributes.put("password", userEntry.getValue());
-        }
+        } 
         return attributes;
     }
 }

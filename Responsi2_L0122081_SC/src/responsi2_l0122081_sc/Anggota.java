@@ -16,19 +16,19 @@ public class Anggota implements data{
     protected String nama;
     protected int jumlahPinjam;
     protected LocalDate d;
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-    protected String date = d.format(formatter);
+    public DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    String date = d.format(formatter);
     
-    public Anggota(String iD, String nama, String date, int jumlahDipinjam) {
+    public Anggota(String iD, String nama, LocalDate d, int jumlahDipinjam) {
         this.id = iD;
         this.nama = nama;
-        this.date = date;
+        date = d.format(formatter);
         this.jumlahPinjam = jumlahDipinjam;
     }    
     
-    public void setAnggota(String n, String date, int j) {
+    public void setAnggota(String n, LocalDate d, int j) {
         this.nama = n;
-        this.date = date;
+        date = d.format(formatter);
         this.jumlahPinjam = j;
     }
     

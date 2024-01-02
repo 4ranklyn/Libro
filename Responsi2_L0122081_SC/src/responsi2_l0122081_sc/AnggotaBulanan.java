@@ -14,7 +14,7 @@ import java.util.HashMap;
  */
 public class AnggotaBulanan extends Anggota{
     
-    public AnggotaBulanan(String id, String nama, String l, int jumlahDipinjam){
+    public AnggotaBulanan(String id, String nama, LocalDate l, int jumlahDipinjam){
         super(id,nama,l,jumlahDipinjam);
     }
     
@@ -33,6 +33,5 @@ public class AnggotaBulanan extends Anggota{
     @Override
     public void addData(String id, String nama) {
         super.addData(id, nama);
-        String ex = "Anggota Bulanan " + nama + " telah ditambahkan.";
     }
 }
