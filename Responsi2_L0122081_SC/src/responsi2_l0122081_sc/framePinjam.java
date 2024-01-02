@@ -4,6 +4,10 @@
  */
 package responsi2_l0122081_sc;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import javax.swing.border.Border;
+
 /**
  *
  * @author franklynical
@@ -15,6 +19,7 @@ public class framePinjam extends javax.swing.JFrame {
      */
     public framePinjam() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(57, 54, 70));
     }
 
     /**
@@ -26,22 +31,207 @@ public class framePinjam extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        Nama = new javax.swing.JTextField(){
+            @Override protected void paintComponent(Graphics g) {
+                Border b = getBorder();
+                if (!isOpaque() && b instanceof RoundedCornerBorder) {
+                    Graphics2D g2 = (Graphics2D) g.create();
+                    g2.setPaint(getBackground());
+                    int w = getWidth() - 1;
+                    int h = getHeight() - 1;
+                    g2.fill(((RoundedCornerBorder) b).getBorderShape(0, 0, w, h));
+                    g2.dispose();
+                }
+                super.paintComponent(g);
+            }
+
+            @Override public void updateUI() {
+                super.updateUI();
+                setOpaque(false);
+                setBorder(new RoundedCornerBorder(8));
+            }
+        }
+        ;
+        ID = new javax.swing.JTextField(){
+            @Override protected void paintComponent(Graphics g) {
+                Border b = getBorder();
+                if (!isOpaque() && b instanceof RoundedCornerBorder) {
+                    Graphics2D g2 = (Graphics2D) g.create();
+                    g2.setPaint(getBackground());
+                    int w = getWidth() - 1;
+                    int h = getHeight() - 1;
+                    g2.fill(((RoundedCornerBorder) b).getBorderShape(0, 0, w, h));
+                    g2.dispose();
+                }
+                super.paintComponent(g);
+            }
+
+            @Override public void updateUI() {
+                super.updateUI();
+                setOpaque(false);
+                setBorder(new RoundedCornerBorder(8));
+            }
+        }
+        ;
+        jButton1 = new javax.swing.JButton(){
+            @Override protected void paintComponent(Graphics g) {
+                Border b = getBorder();
+                if (!isOpaque() && b instanceof RoundedCornerBorder) {
+                    Graphics2D g2 = (Graphics2D) g.create();
+                    g2.setPaint(getBackground());
+                    int w = getWidth() - 1;
+                    int h = getHeight() - 1;
+                    g2.fill(((RoundedCornerBorder) b).getBorderShape(0, 0, w, h));
+                    g2.dispose();
+                }
+                super.paintComponent(g);
+            }
+
+            @Override public void updateUI() {
+                super.updateUI();
+                setOpaque(false);
+                setBorder(new RoundedCornerBorder(8));
+            }
+        }
+        ;
+        jButton2 = new javax.swing.JButton(){
+            @Override protected void paintComponent(Graphics g) {
+                Border b = getBorder();
+                if (!isOpaque() && b instanceof RoundedCornerBorder) {
+                    Graphics2D g2 = (Graphics2D) g.create();
+                    g2.setPaint(getBackground());
+                    int w = getWidth() - 1;
+                    int h = getHeight() - 1;
+                    g2.fill(((RoundedCornerBorder) b).getBorderShape(0, 0, w, h));
+                    g2.dispose();
+                }
+                super.paintComponent(g);
+            }
+
+            @Override public void updateUI() {
+                super.updateUI();
+                setOpaque(false);
+                setBorder(new RoundedCornerBorder(8));
+            }
+        }
+        ;
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 400));
+        setResizable(false);
+
+        jLabel1.setForeground(new java.awt.Color(244, 238, 224));
+        jLabel1.setText("ID Anggota");
+
+        jLabel2.setForeground(new java.awt.Color(244, 238, 224));
+        jLabel2.setText("ID Buku");
+
+        Nama.setBackground(new java.awt.Color(244, 238, 224));
+        Nama.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
+        Nama.setForeground(new java.awt.Color(109, 93, 110));
+        Nama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NamaActionPerformed(evt);
+            }
+        });
+
+        ID.setBackground(new java.awt.Color(244, 238, 224));
+        ID.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
+        ID.setForeground(new java.awt.Color(109, 93, 110));
+
+        jButton1.setBackground(new java.awt.Color(244, 238, 224));
+        jButton1.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(109, 93, 110));
+        jButton1.setText("Kembalikan");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(244, 238, 224));
+        jButton2.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(109, 93, 110));
+        jButton2.setText("Pinjam");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Nama, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(135, 135, 135))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(67, 67, 67)
+                        .addComponent(jButton1)
+                        .addGap(73, 73, 73))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void NamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NamaActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +269,11 @@ public class framePinjam extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ID;
+    private javax.swing.JTextField Nama;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
