@@ -21,6 +21,23 @@ public class AnggotaBulanan extends Anggota{
     this.jumlahPinjam = jumlahDipinjam;
     }
     
+    public String getID(){
+        return id;
+    }
+    
+    public String getNama(){
+        return nama;
+    }
+    
+    public LocalDate getDate(){
+        return d;
+    }
+    
+    public int getJumlahPinjam(){
+        return jumlahPinjam;
+    }
+    
+    
     public AnggotaBulanan(String id, String nama, LocalDate l, int jumlahDipinjam){
         super(id,nama,l,jumlahDipinjam);
     }

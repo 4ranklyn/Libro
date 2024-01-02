@@ -19,6 +19,21 @@ public class AnggotaTetap extends Anggota {
     String date = d.format(formatter);
     this.jumlahPinjam = jumlahDipinjam;
 }
+    public String getID(){
+        return id;
+    }
+    
+    public String getNama(){
+        return nama;
+    }
+    
+    public LocalDate getDate(){
+        return d;
+    }
+    
+    public int getJumlahPinjam(){
+        return jumlahPinjam;
+    }
     
     @Override
     public void addData(String id, String nama) {

@@ -27,6 +27,7 @@ public class frameAnggotaTetap extends javax.swing.JFrame {
      * Creates new form frameAnggota
      */
     public frameAnggotaTetap() {
+        AccessXML.readXML();
         initComponents();
         getContentPane().setBackground(new java.awt.Color(57, 54, 70));
         Document docID = ID.getDocument();
@@ -67,6 +68,11 @@ public class frameAnggotaTetap extends javax.swing.JFrame {
                 }
             }
         });
+        
+        for(String id : Pinjam.tMap.keySet()){
+            AnggotaTetap at = Pinjam.tMap.get(id);
+            model.addRow(new Object[]{id, at.getName(), at.getDate().toString(), at.getJumlahPinjam()});
+        }
     }
 
     private void checkID() {
@@ -351,7 +357,6 @@ public class frameAnggotaTetap extends javax.swing.JFrame {
         LocalDate l = LocalDate.now();
         String s = l.toString();
         int jumlahDipinjam = 0;
-        boolean isTetap = true;
         javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
         AnggotaTetap a = Pinjam.tMap.get(iD);
         

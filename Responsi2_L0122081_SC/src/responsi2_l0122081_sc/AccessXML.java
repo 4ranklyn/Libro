@@ -56,11 +56,19 @@ public class AccessXML {
 
                     String id = anggotaElement.getAttribute("id");
                     String nama = anggotaElement.getAttribute("nama");
-                    LocalDate tanggalMulai = LocalDate.parse(anggotaElement.getAttribute("tanggalMulai"));
+                    String tanggalMulaiString = anggotaElement.getAttribute("tanggalMulai");
+                    LocalDate tanggalMulai;
+
+                    if (!tanggalMulaiString.isEmpty()) {
+                        tanggalMulai = LocalDate.parse(tanggalMulaiString);
+                    } else {
+                        tanggalMulaiString = LocalDate.now().toString();
+                        continue;
+                    }
                     int jumlahPinjam = Integer.parseInt(anggotaElement.getAttribute("jumlahPinjam"));
 
                     AnggotaTetap anggota = new AnggotaTetap(id, nama, tanggalMulai, jumlahPinjam);
-                    anggota.date = tanggalMulai.toString();
+                    anggota.date = tanggalMulaiString;
                     anggota.jumlahPinjam = jumlahPinjam;
 
                     Pinjam.tMap.put(id, anggota);
@@ -90,12 +98,19 @@ public class AccessXML {
 
                     String id = anggotaElement.getAttribute("id");
                     String nama = anggotaElement.getAttribute("nama");
+                    String tanggalMulaiString = anggotaElement.getAttribute("tanggalMulai");
                     LocalDate tanggalMulai;
-                    tanggalMulai = LocalDate.parse(anggotaElement.getAttribute("tanggalMulai"));
+
+                    if (!tanggalMulaiString.isEmpty()) {
+                        tanggalMulai = LocalDate.parse(tanggalMulaiString);
+                    } else {
+                        tanggalMulaiString = LocalDate.now().toString();
+                        continue;
+                    }
                     int jumlahPinjam = Integer.parseInt(anggotaElement.getAttribute("jumlahPinjam"));
 
                     AnggotaBulanan anggota = new AnggotaBulanan(id, nama, tanggalMulai, jumlahPinjam);
-                    anggota.date = tanggalMulai.toString();
+                    anggota.date = tanggalMulaiString;
                     anggota.jumlahPinjam = jumlahPinjam;
 
                     Pinjam.bMap.put(id, anggota);

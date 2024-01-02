@@ -4,8 +4,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
 -->
 <AnggotaTetapData>
-    <AnggotaTetap id="AT001" nama="John Doe" tanggalMulai="2022-01-01" jumlahPinjam="2" />
-    <AnggotaTetap id="AT002" nama="Jane Smith" tanggalMulai="2022-02-15" jumlahPinjam="1" />
+    <AnggotaTetap> 
+        <id>AT001</id>
+        <nama>John Doe</nama>
+        <tanggalMulai>2022-01-01</tanggalMulai>
+        <jumlahPinjam>1</jumlahPinjam> 
+    </AnggotaTetap>
+        <AnggotaTetap> 
+        <id>AT002</id>
+        <nama>Jane Smith</nama>
+        <tanggalMulai>2022-02-01</tanggalMulai>
+        <jumlahPinjam>0</jumlahPinjam> 
+    </AnggotaTetap>
 </AnggotaTetapData>
 
 

@@ -15,7 +15,7 @@ public class Anggota implements data{
     protected String id;
     protected String nama;
     protected int jumlahPinjam;
-    protected LocalDate d;
+    protected LocalDate d = LocalDate.now();
     public DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     String date = d.format(formatter);
     
