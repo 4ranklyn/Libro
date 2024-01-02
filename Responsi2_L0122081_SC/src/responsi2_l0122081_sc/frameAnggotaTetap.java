@@ -57,7 +57,8 @@ public class frameAnggotaTetap extends javax.swing.JFrame {
                 if (column != 0) {
                     String id = model.getValueAt(row, 0).toString();
                     String nama = model.getValueAt(row, 1).toString();
-                    LocalDate date = (LocalDate) model.getValueAt(row, 2);
+                    LocalDate date = LocalDate.now();
+                    String d = model.getValueAt(row, 2).toString();
                     int jumlahPinjam = (int) model.getValueAt(row, 3);
 
                     AnggotaTetap anggota = Pinjam.tMap.get(id);
@@ -244,7 +245,22 @@ public class frameAnggotaTetap extends javax.swing.JFrame {
             new String [] {
                 "ID", "Nama", "Tanggal Mulai", "Buku Dipinjam"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setForeground(new java.awt.Color(244, 238, 224));
