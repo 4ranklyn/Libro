@@ -18,6 +18,7 @@ public class framePinjam extends javax.swing.JFrame {
      * Creates new form framePinjam
      */
     public framePinjam() {
+        AccessXML.readXML();
         initComponents();
         getContentPane().setBackground(new java.awt.Color(57, 54, 70));
     }
@@ -117,6 +118,27 @@ public class framePinjam extends javax.swing.JFrame {
             }
         }
         ;
+        jButton3 = new javax.swing.JButton(){
+            @Override protected void paintComponent(Graphics g) {
+                Border b = getBorder();
+                if (!isOpaque() && b instanceof RoundedCornerBorder) {
+                    Graphics2D g2 = (Graphics2D) g.create();
+                    g2.setPaint(getBackground());
+                    int w = getWidth() - 1;
+                    int h = getHeight() - 1;
+                    g2.fill(((RoundedCornerBorder) b).getBorderShape(0, 0, w, h));
+                    g2.dispose();
+                }
+                super.paintComponent(g);
+            }
+
+            @Override public void updateUI() {
+                super.updateUI();
+                setOpaque(false);
+                setBorder(new RoundedCornerBorder(8));
+            }
+        }
+        ;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -170,6 +192,21 @@ public class framePinjam extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(244, 238, 224));
+        jButton3.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(109, 93, 110));
+        jButton3.setText("Home");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -191,6 +228,10 @@ public class framePinjam extends javax.swing.JFrame {
                         .addGap(67, 67, 67)
                         .addComponent(jButton1)
                         .addGap(73, 73, 73))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jButton3)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,7 +248,9 @@ public class framePinjam extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -232,6 +275,17 @@ public class framePinjam extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        AccessXML.writeXML();
+        frameUtama fu = new frameUtama();
+        fu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,6 +327,7 @@ public class framePinjam extends javax.swing.JFrame {
     private javax.swing.JTextField Nama;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

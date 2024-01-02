@@ -1,19 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
--->
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
 <AnggotaTetapData>
-    <AnggotaTetap> 
-        <id>AT001</id>
-        <nama>John Doe</nama>
-        <jumlahPinjam>1</jumlahPinjam> 
-    </AnggotaTetap>
-        <AnggotaTetap> 
-        <id>AT002</id>
-        <nama>Jane Smith</nama>
-        <jumlahPinjam>0</jumlahPinjam> 
-    </AnggotaTetap>
+    <AnggotaTetap id="AT003" jumlahPinjam="0" nama="mArtha"/>
 </AnggotaTetapData>
-
-

@@ -366,14 +366,14 @@ public class frameAnggotaTetap extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        String iD=ID.getText();
+        String iD= ID.getText();
         String nama = Nama.getText();
         int jumlahDipinjam = 0;
         javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
         AnggotaTetap a = Pinjam.tMap.get(iD);
         
         model.addRow(new Object[]{iD, nama, jumlahDipinjam});
-        a.setAnggotaTetap(iD, nama, jumlahDipinjam);
+        Pinjam.anggotaTetapBaru(iD, nama, jumlahDipinjam);
         
         AccessXML.writeXML();
         jTable1.setModel(model);
